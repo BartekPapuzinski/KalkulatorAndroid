@@ -8,8 +8,8 @@
 
     <Button
         android:id="@+id/Przycisk1"
-        android:layout_width="79dp"
-        android:layout_height="79dp"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -24,8 +24,8 @@
 
     <Button
         android:id="@+id/Przycisk2"
-        android:layout_width="79dp"
-        android:layout_height="79dp"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -40,8 +40,8 @@
 
     <Button
         android:id="@+id/Przycisk3"
-        android:layout_width="79dp"
-        android:layout_height="79dp"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -56,8 +56,8 @@
 
     <Button
         android:id="@+id/PrzyciskDzielenie"
-        android:layout_width="79dp"
-        android:layout_height="79dp"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -65,15 +65,15 @@
         android:text="/"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.958"
+        app:layout_constraintHorizontal_bias="0.982"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.75" />
+        app:layout_constraintVertical_bias="0.751" />
 
     <Button
         android:id="@+id/Przycisk4"
-        android:layout_width="79dp"
-        android:layout_height="79dp"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -88,8 +88,8 @@
 
     <Button
         android:id="@+id/Przycisk5"
-        android:layout_width="79dp"
-        android:layout_height="79dp"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -104,8 +104,8 @@
 
     <Button
         android:id="@+id/Przycisk6"
-        android:layout_width="79dp"
-        android:layout_height="79dp"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -113,15 +113,15 @@
         android:text="6"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.65"
+        app:layout_constraintHorizontal_bias="0.673"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.531" />
+        app:layout_constraintVertical_bias="0.53" />
 
     <Button
         android:id="@+id/PrzyciskRazy"
-        android:layout_width="79dp"
-        android:layout_height="79dp"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -129,15 +129,15 @@
         android:text="*"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.972"
+        app:layout_constraintHorizontal_bias="0.982"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.531" />
+        app:layout_constraintVertical_bias="0.514" />
 
     <Button
         android:id="@+id/Przycisk7"
-        android:layout_width="79dp"
-        android:layout_height="79dp"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -152,8 +152,8 @@
 
     <Button
         android:id="@+id/przyciskAC"
-        android:layout_width="168dp"
-        android:layout_height="56dp"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -161,15 +161,15 @@
         android:text="AC"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.04"
+        app:layout_constraintHorizontal_bias="0.028"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.145" />
+        app:layout_constraintVertical_bias="0.032" />
 
     <Button
         android:id="@+id/przyciskC"
-        android:layout_width="168dp"
-        android:layout_height="56dp"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -177,15 +177,15 @@
         android:text="C"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.94"
+        app:layout_constraintHorizontal_bias="0.982"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.145" />
+        app:layout_constraintVertical_bias="0.032" />
 
     <Button
         android:id="@+id/Przycisk8"
-        android:layout_width="79dp"
-        android:layout_height="79dp"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -193,15 +193,15 @@
         android:text="8"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.335"
+        app:layout_constraintHorizontal_bias="0.342"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.31" />
 
     <Button
         android:id="@+id/Przycisk9"
-        android:layout_width="79dp"
-        android:layout_height="79dp"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -209,15 +209,15 @@
         android:text="9"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.65"
+        app:layout_constraintHorizontal_bias="0.673"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.31" />
 
     <Button
         android:id="@+id/PrzyciskPlusMinus"
-        android:layout_width="79dp"
-        android:layout_height="79dp"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -225,15 +225,15 @@
         android:text="+/-"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.972"
+        app:layout_constraintHorizontal_bias="0.982"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.31" />
 
     <Button
         android:id="@+id/Przycisk0"
-        android:layout_width="79dp"
-        android:layout_height="79dp"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -248,8 +248,8 @@
 
     <Button
         android:id="@+id/PrzyciskMinus"
-        android:layout_width="79dp"
-        android:layout_height="79dp"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -257,15 +257,15 @@
         android:text="-"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.65"
+        app:layout_constraintHorizontal_bias="0.673"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.98" />
+        app:layout_constraintVertical_bias="0.979" />
 
     <Button
         android:id="@+id/PrzyciskPlus"
-        android:layout_width="79dp"
-        android:layout_height="79dp"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -273,15 +273,15 @@
         android:text="+"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.972"
+        app:layout_constraintHorizontal_bias="0.982"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.98" />
+        app:layout_constraintVertical_bias="0.979" />
 
     <Button
         android:id="@+id/PrzyciskRowna"
-        android:layout_width="79dp"
-        android:layout_height="79dp"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -296,7 +296,7 @@
 
     <TextView
         android:id="@+id/Wyswietlacz"
-        android:layout_width="355dp"
+        android:layout_width="295dp"
         android:layout_height="41dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -306,9 +306,8 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.615"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.017" />
+        app:layout_constraintVertical_bias="0.031" />
 
 </android.support.constraint.ConstraintLayout>
