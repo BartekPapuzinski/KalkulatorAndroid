@@ -178,9 +178,15 @@ public class Prosty extends AppCompatActivity {
         {
             @Override
             public void onClick(View v) {
-                double a=Double.parseDouble(wysw)*(-1);
-                wysw=Double.toString(a);
-                wyswietlacz.setText(wysw);
+                if(wysw.length()==0)
+                {
+
+                }
+                else {
+                    double a = Double.parseDouble(wysw) * (-1);
+                    wysw = Double.toString(a);
+                    wyswietlacz.setText(wysw);
+                }
 
 
             }
