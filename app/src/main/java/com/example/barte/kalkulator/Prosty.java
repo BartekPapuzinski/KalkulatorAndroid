@@ -29,8 +29,9 @@ public class Prosty extends AppCompatActivity {
         final Button przycisk7 =findViewById(R.id.Przycisk7);
         final Button przycisk8 =findViewById(R.id.Przycisk8);
         final Button przycisk9 =findViewById(R.id.Przycisk9);
-        final Button przyciskac =findViewById(R.id.przyciskAC);
-        final Button przyciskc =findViewById(R.id.przyciskC);
+        final Button przyciskkropka =findViewById(R.id.PrzyciskKropka);
+        final Button przyciskac =findViewById(R.id.PrzyciskAC);
+        final Button przyciskc =findViewById(R.id.PrzyciskC);
         final Button przyciskplus =findViewById(R.id.PrzyciskPlus);
         final Button przyciskminus =findViewById(R.id.PrzyciskMinus);
         final Button przyciskrazy =findViewById(R.id.PrzyciskRazy);
@@ -43,7 +44,7 @@ public class Prosty extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                liczby(0,wyswietlacz);
+                liczby("0",wyswietlacz);
 
             }
         });
@@ -52,7 +53,7 @@ public class Prosty extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                liczby(1,wyswietlacz);
+                liczby("1",wyswietlacz);
 
             }
         });
@@ -61,7 +62,7 @@ public class Prosty extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                liczby(2,wyswietlacz);
+                liczby("2",wyswietlacz);
 
             }
         });
@@ -70,7 +71,7 @@ public class Prosty extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                liczby(3,wyswietlacz);
+                liczby("3",wyswietlacz);
 
             }
         });
@@ -79,7 +80,7 @@ public class Prosty extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                liczby(4,wyswietlacz);
+                liczby("4",wyswietlacz);
 
             }
         });
@@ -88,7 +89,7 @@ public class Prosty extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                liczby(5,wyswietlacz);
+                liczby("5",wyswietlacz);
 
             }
         });
@@ -97,7 +98,7 @@ public class Prosty extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                liczby(6,wyswietlacz);
+                liczby("6",wyswietlacz);
 
             }
         });
@@ -106,7 +107,7 @@ public class Prosty extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                liczby(7,wyswietlacz);
+                liczby("7",wyswietlacz);
 
             }
         });
@@ -115,7 +116,7 @@ public class Prosty extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                liczby(8,wyswietlacz);
+                liczby("8",wyswietlacz);
 
             }
         });
@@ -124,7 +125,26 @@ public class Prosty extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                liczby(9,wyswietlacz);
+                liczby("9",wyswietlacz);
+
+            }
+        });
+        przyciskkropka.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                int x=wysw.indexOf(".");
+                if(x==(-1))
+                {
+                    if(wyswietlacz.length()==0) {
+                        liczby("0.", wyswietlacz);
+                    }
+                    else{
+                        liczby(".", wyswietlacz);
+                    }
+            }
+
 
             }
         });
@@ -300,7 +320,7 @@ public class Prosty extends AppCompatActivity {
 
     }
 
-    private void liczby(int a,TextView wyswietlacz) {
+    private void liczby(String a,TextView wyswietlacz) {
         if(rowna==true){
             wysw="";
             rowna=false;
