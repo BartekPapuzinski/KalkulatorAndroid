@@ -173,7 +173,7 @@ public class Prosty extends AppCompatActivity {
 
             }
         });
-
+//test gita
         przyciskplusminus.setOnClickListener(new View.OnClickListener()
         {
             @Override
