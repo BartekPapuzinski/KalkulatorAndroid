@@ -46,6 +46,7 @@ public class Zaawansowany extends AppCompatActivity {
         final Button przyciskrowna =findViewById(R.id.PrzyciskRowna);
         final Button przyciskplusminus =findViewById(R.id.PrzyciskPlusMinus);
         final Button przycisksqrt =findViewById(R.id.PrzyciskSqrt);
+        final Button przyciskxdo2 =findViewById(R.id.PrzyciskXdo2);
 
         przycisk0.setOnClickListener(new View.OnClickListener()
         {
@@ -274,7 +275,24 @@ public class Zaawansowany extends AppCompatActivity {
                 dzialanie="sqrt";
                 przyciskrowna.callOnClick();
                 rowna=false;
-                dzialanieuzyte=true;
+
+
+            }
+        });
+        przyciskxdo2.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+
+                if(dzialanieuzyte==true)
+                {
+                    przyciskrowna.callOnClick();
+                }
+                dzialanie="xdo2";
+                przyciskrowna.callOnClick();
+                rowna=false;
+
 
             }
         });
@@ -341,6 +359,13 @@ public class Zaawansowany extends AppCompatActivity {
                 if(dzialanie.equals("sqrt")){
                     Double temp2;
                     temp2=(sqrt(Double.parseDouble(wysw)));
+                    wysw=temp2.toString();
+                    wyswietlacz.setText(wysw);
+
+                }
+                if(dzialanie.equals("xdo2")){
+                    Double temp2;
+                    temp2=Double.parseDouble(wysw)*Double.parseDouble(wysw);
                     wysw=temp2.toString();
                     wyswietlacz.setText(wysw);
 
