@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import java.net.Inet4Address;
 
+import static java.lang.Math.sin;
 import static java.lang.Math.sqrt;
 
 public class Zaawansowany extends AppCompatActivity {
@@ -36,6 +37,7 @@ public class Zaawansowany extends AppCompatActivity {
         final Button przycisk7 =findViewById(R.id.Przycisk7);
         final Button przycisk8 =findViewById(R.id.Przycisk8);
         final Button przycisk9 =findViewById(R.id.Przycisk9);
+        final Button przyciskpi =findViewById(R.id.PrzyciskPi);
         final Button przyciskkropka =findViewById(R.id.PrzyciskKropka);
         final Button przyciskac =findViewById(R.id.PrzyciskAC);
         final Button przyciskc =findViewById(R.id.PrzyciskC);
@@ -47,6 +49,7 @@ public class Zaawansowany extends AppCompatActivity {
         final Button przyciskplusminus =findViewById(R.id.PrzyciskPlusMinus);
         final Button przycisksqrt =findViewById(R.id.PrzyciskSqrt);
         final Button przyciskxdo2 =findViewById(R.id.PrzyciskXdo2);
+        final Button przycisksin =findViewById(R.id.PrzyciskSin);
 
         przycisk0.setOnClickListener(new View.OnClickListener()
         {
@@ -135,6 +138,17 @@ public class Zaawansowany extends AppCompatActivity {
             public void onClick(View v)
             {
                 liczby("9",wyswietlacz);
+
+            }
+        });
+        przyciskpi.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Double a= Math.PI;
+                String aa=a.toString();
+                liczby(aa,wyswietlacz);
 
             }
         });
@@ -282,16 +296,29 @@ public class Zaawansowany extends AppCompatActivity {
         przyciskxdo2.setOnClickListener(new View.OnClickListener()
         {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
 
-                if(dzialanieuzyte==true)
-                {
+                if (dzialanieuzyte == true) {
                     przyciskrowna.callOnClick();
                 }
-                dzialanie="xdo2";
+                dzialanie = "xdo2";
                 przyciskrowna.callOnClick();
-                rowna=false;
+                rowna = false;
+
+
+            }
+        });
+        przycisksin.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) {
+
+                if (dzialanieuzyte == true) {
+                    przyciskrowna.callOnClick();
+                }
+                dzialanie = "sin";
+                przyciskrowna.callOnClick();
+                rowna = false;
 
 
             }
@@ -366,6 +393,13 @@ public class Zaawansowany extends AppCompatActivity {
                 if(dzialanie.equals("xdo2")){
                     Double temp2;
                     temp2=Double.parseDouble(wysw)*Double.parseDouble(wysw);
+                    wysw=temp2.toString();
+                    wyswietlacz.setText(wysw);
+
+                }
+                if(dzialanie.equals("sin")){
+                    Double temp2;
+                    temp2=sin(Double.parseDouble(wysw));
                     wysw=temp2.toString();
                     wyswietlacz.setText(wysw);
 
