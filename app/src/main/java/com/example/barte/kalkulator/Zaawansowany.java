@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import java.net.Inet4Address;
 
+import static java.lang.Math.cos;
 import static java.lang.Math.sin;
 import static java.lang.Math.sqrt;
 
@@ -50,6 +51,7 @@ public class Zaawansowany extends AppCompatActivity {
         final Button przycisksqrt =findViewById(R.id.PrzyciskSqrt);
         final Button przyciskxdo2 =findViewById(R.id.PrzyciskXdo2);
         final Button przycisksin =findViewById(R.id.PrzyciskSin);
+        final Button przyciskcos =findViewById(R.id.PrzyciskCos);
 
         przycisk0.setOnClickListener(new View.OnClickListener()
         {
@@ -323,6 +325,21 @@ public class Zaawansowany extends AppCompatActivity {
 
             }
         });
+        przyciskcos.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) {
+
+                if (dzialanieuzyte == true) {
+                    przyciskrowna.callOnClick();
+                }
+                dzialanie = "cos";
+                przyciskrowna.callOnClick();
+                rowna = false;
+
+
+            }
+        });
         przyciskrowna.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -400,6 +417,13 @@ public class Zaawansowany extends AppCompatActivity {
                 if(dzialanie.equals("sin")){
                     Double temp2;
                     temp2=sin(Double.parseDouble(wysw));
+                    wysw=temp2.toString();
+                    wyswietlacz.setText(wysw);
+
+                }
+                if(dzialanie.equals("cos")){
+                    Double temp2;
+                    temp2=cos(Double.parseDouble(wysw));
                     wysw=temp2.toString();
                     wyswietlacz.setText(wysw);
 
