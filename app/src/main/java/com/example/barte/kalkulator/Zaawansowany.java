@@ -6,6 +6,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.net.Inet4Address;
+
+import static java.lang.Math.sqrt;
+
 public class Zaawansowany extends AppCompatActivity {
 
     String wysw="";
@@ -41,6 +45,7 @@ public class Zaawansowany extends AppCompatActivity {
         final Button przyciskdzielenie =findViewById(R.id.PrzyciskDzielenie);
         final Button przyciskrowna =findViewById(R.id.PrzyciskRowna);
         final Button przyciskplusminus =findViewById(R.id.PrzyciskPlusMinus);
+        final Button przycisksqrt =findViewById(R.id.PrzyciskSqrt);
 
         przycisk0.setOnClickListener(new View.OnClickListener()
         {
@@ -256,6 +261,23 @@ public class Zaawansowany extends AppCompatActivity {
 
             }
         });
+        przycisksqrt.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+
+                if(dzialanieuzyte==true)
+                {
+                    przyciskrowna.callOnClick();
+                }
+                dzialanie="sqrt";
+                przyciskrowna.callOnClick();
+                rowna=false;
+                dzialanieuzyte=true;
+
+            }
+        });
         przyciskrowna.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -315,6 +337,13 @@ public class Zaawansowany extends AppCompatActivity {
                     if (dzialanieuzyte == true) {
                         temp = temp2;
                     }
+                }
+                if(dzialanie.equals("sqrt")){
+                    Double temp2;
+                    temp2=(sqrt(Double.parseDouble(wysw)));
+                    wysw=temp2.toString();
+                    wyswietlacz.setText(wysw);
+
                 }
                 dzialanieuzyte=false;
 
