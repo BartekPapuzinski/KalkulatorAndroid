@@ -6,19 +6,28 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.net.Inet4Address;
-
-import static java.lang.Math.cos;
-import static java.lang.Math.sin;
-import static java.lang.Math.sqrt;
-
 public class Zaawansowany extends AppCompatActivity {
 
     String wysw="";
-    String temp;
     String dzialanie="";
-    boolean dzialanieuzyte=false;
-    boolean rowna=false;
+    boolean dzialanieuz=true;
+    boolean trygonometria =false;
+    boolean minus=true;
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("wysw",wysw);
+    }
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        String wysw1 = savedInstanceState.getString("wysw");
+        wysw=wysw1;
+        final TextView wyswietlacz = findViewById(R.id.Wyswietlacz);
+        wyswietlacz.setText(wysw);
+        super.onRestoreInstanceState(savedInstanceState);
+    }
+
 
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -53,6 +62,7 @@ public class Zaawansowany extends AppCompatActivity {
         final Button przycisksin =findViewById(R.id.PrzyciskSin);
         final Button przyciskcos =findViewById(R.id.PrzyciskCos);
 
+        final Kalkulator kalkulator = new Kalkulator();
         przycisk0.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -149,8 +159,8 @@ public class Zaawansowany extends AppCompatActivity {
             public void onClick(View v)
             {
                 Double a= Math.PI;
-                String aa=a.toString();
-                liczby(aa,wyswietlacz);
+                String pi=a.toString();
+                liczby(pi,wyswietlacz);
 
             }
         });
@@ -179,14 +189,12 @@ public class Zaawansowany extends AppCompatActivity {
             public void onClick(View v)
             {
                 wysw="";
-                temp="";
                 dzialanie="";
-                dzialanieuzyte=false;
                 wyswietlacz.setText(wysw);
 
             }
         });
-        przyciskc.setOnClickListener(new View.OnClickListener()
+        przyciskc.setOnClickListener(new View.OnClickListener()//todo
         {
             @Override
             public void onClick(View v) {
@@ -203,17 +211,8 @@ public class Zaawansowany extends AppCompatActivity {
         {
             @Override
             public void onClick(View v) {
-                if(wysw.length()==0)
-                {
-
-                }
-                else {
-                    double a = Double.parseDouble(wysw) * (-1);
-                    wysw = Double.toString(a);
-                    wyswietlacz.setText(wysw);
-                }
-
-
+                wysw= kalkulator.plusminus(wysw);
+                wyswietlacz.setText(wysw);
             }
         });
         przyciskplus.setOnClickListener(new View.OnClickListener()
@@ -221,15 +220,20 @@ public class Zaawansowany extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                if(dzialanieuzyte==true)
-                {
-                    przyciskrowna.callOnClick();
+
+                if(dzialanieuz==true){
+
                 }
-                temp=wysw;
-                dzialanie="+";
-                wysw="";
-                rowna=false;
-                dzialanieuzyte=true;
+                else {
+                    if(trygonometria==true){
+                        wysw+=")";
+                        trygonometria =false;
+                    }
+                    wysw += " + ";
+                    dzialanie += " +";
+                    wyswietlacz.setText(wysw);
+                    dzialanieuz=true;
+                }
 
             }
         });
@@ -238,15 +242,24 @@ public class Zaawansowany extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                if(dzialanieuzyte==true)
-                {
-                    przyciskrowna.callOnClick();
+                if(dzialanieuz==true){
+
                 }
-                temp=wysw;
-                dzialanie="-";
-                wysw="";
-                rowna=false;
-                dzialanieuzyte=true;
+                else {
+                    if(trygonometria==true){
+                        wysw+=")";
+                        trygonometria =false;
+                    }
+                    wysw += " - ";
+                    dzialanie += " -";
+                    wyswietlacz.setText(wysw);
+                    dzialanieuz=true;
+                }
+                if(trygonometria ==true && minus==true){
+                    wysw+="-";
+                    wyswietlacz.setText(wysw);
+                    minus=false;
+                }
 
             }
         });
@@ -255,15 +268,19 @@ public class Zaawansowany extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                if(dzialanieuzyte==true)
-                {
-                    przyciskrowna.callOnClick();
+                if(dzialanieuz==true){
+
                 }
-                temp=wysw;
-                dzialanie="*";
-                wysw="";
-                rowna=false;
-                dzialanieuzyte=true;
+                else {
+                    if(trygonometria==true){
+                        wysw+=")";
+                        trygonometria =false;
+                    }
+                    wysw += " * ";
+                    dzialanie += " *";
+                    wyswietlacz.setText(wysw);
+                    dzialanieuz=true;
+                }
 
             }
         });
@@ -272,15 +289,19 @@ public class Zaawansowany extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                if(dzialanieuzyte==true)
-                {
-                    przyciskrowna.callOnClick();
+                if(dzialanieuz==true){
+
                 }
-                temp=wysw;
-                dzialanie="/";
-                wysw="";
-                rowna=false;
-                dzialanieuzyte=true;
+                else {
+                    if(trygonometria==true){
+                        wysw+=")";
+                        trygonometria =false;
+                    }
+                    wysw += " / ";
+                    dzialanie += " /";
+                    wyswietlacz.setText(wysw);
+                    dzialanieuz=true;
+                }
 
             }
         });
@@ -290,13 +311,13 @@ public class Zaawansowany extends AppCompatActivity {
             public void onClick(View v)
             {
 
-                if(dzialanieuzyte==true)
-                {
-                    przyciskrowna.callOnClick();
-                }
-                dzialanie="sqrt";
-                przyciskrowna.callOnClick();
-                rowna=false;
+                wysw += " sqrt (";
+                dzialanie += " sqrt";
+                wyswietlacz.setText(wysw);
+                trygonometria =true;
+                minus=false;
+
+
 
 
             }
@@ -306,12 +327,12 @@ public class Zaawansowany extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (dzialanieuzyte == true) {
-                    przyciskrowna.callOnClick();
-                }
-                dzialanie = "xdo2";
-                przyciskrowna.callOnClick();
-                rowna = false;
+
+                    wysw += " ^2";
+                    dzialanie += " ^2";
+                    wyswietlacz.setText(wysw);
+                    dzialanieuz=true;
+
 
 
             }
@@ -321,13 +342,11 @@ public class Zaawansowany extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (dzialanieuzyte == true) {
-                    przyciskrowna.callOnClick();
-                }
-                dzialanie = "sin";
-                przyciskrowna.callOnClick();
-                rowna = false;
-
+                    wysw += "sin (";
+                    dzialanie += " sin";
+                    wyswietlacz.setText(wysw);
+                    trygonometria =true;
+                    minus=true;
 
             }
         });
@@ -336,13 +355,11 @@ public class Zaawansowany extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (dzialanieuzyte == true) {
-                    przyciskrowna.callOnClick();
-                }
-                dzialanie = "cos";
-                przyciskrowna.callOnClick();
-                rowna = false;
-
+                    wysw += "cos (";
+                    dzialanie += " cos";
+                    wyswietlacz.setText(wysw);
+                    trygonometria =true;
+                    minus=true;
 
             }
         });
@@ -351,90 +368,14 @@ public class Zaawansowany extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                if(dzialanie.equals("+")){
-                    String temp2=wysw;
-                    double a=Double.parseDouble(temp)+Double.parseDouble(wysw);
-                    wysw=Double.toString(a);
-                    wyswietlacz.setText(wysw);
-                    rowna=true;
-                    if(dzialanieuzyte==true){
-                        temp=temp2;
-                    }
+                if(trygonometria==true){
+                    wysw+=")";
+                    trygonometria =false;
+                }
+                String temp=kalkulator.rowna(wysw);
+                wysw=temp;
+                wyswietlacz.setText(wysw);
 
-                }
-                if(dzialanie.equals("-")) {
-                    String temp2 = wysw;
-                    if(rowna==false) {
-                        double a = Double.parseDouble(temp) - Double.parseDouble(wysw);
-                        wysw = Double.toString(a);
-                        wyswietlacz.setText(wysw);
-                        rowna=true;
-                    }
-                    else if(rowna==true) {
-                        double a = Double.parseDouble(wysw) - Double.parseDouble(temp);
-                        wysw = Double.toString(a);
-                        wyswietlacz.setText(wysw);
-                    }
-                    if (dzialanieuzyte == true) {
-                        temp = temp2;
-                    }
-                }
-                if(dzialanie.equals("*")) {
-                    String temp2 = wysw;
-                    double a = Double.parseDouble(temp) * Double.parseDouble(wysw);
-                    wysw = Double.toString(a);
-                    wyswietlacz.setText(wysw);
-                    rowna=true;
-                    if (dzialanieuzyte == true) {
-                        temp = temp2;
-                    }
-                }
-                if(dzialanie.equals("/")) {
-                    String temp2 = wysw;
-                    if(rowna==false) {
-                        double a = Double.parseDouble(temp) / Double.parseDouble(wysw);
-                        wysw = Double.toString(a);
-                        wyswietlacz.setText(wysw);
-                        rowna=true;
-                    }
-                    else if(rowna==true) {
-                        double a = Double.parseDouble(wysw) / Double.parseDouble(temp);
-                        wysw = Double.toString(a);
-                        wyswietlacz.setText(wysw);
-                    }
-                    if (dzialanieuzyte == true) {
-                        temp = temp2;
-                    }
-                }
-                if(dzialanie.equals("sqrt")){
-                    Double temp2;
-                    temp2=(sqrt(Double.parseDouble(wysw)));
-                    wysw=temp2.toString();
-                    wyswietlacz.setText(wysw);
-
-                }
-                if(dzialanie.equals("xdo2")){
-                    Double temp2;
-                    temp2=Double.parseDouble(wysw)*Double.parseDouble(wysw);
-                    wysw=temp2.toString();
-                    wyswietlacz.setText(wysw);
-
-                }
-                if(dzialanie.equals("sin")){
-                    Double temp2;
-                    temp2=sin(Double.parseDouble(wysw));
-                    wysw=temp2.toString();
-                    wyswietlacz.setText(wysw);
-
-                }
-                if(dzialanie.equals("cos")){
-                    Double temp2;
-                    temp2=cos(Double.parseDouble(wysw));
-                    wysw=temp2.toString();
-                    wyswietlacz.setText(wysw);
-
-                }
-                dzialanieuzyte=false;
 
             }
         });
@@ -442,11 +383,11 @@ public class Zaawansowany extends AppCompatActivity {
     }
 
     private void liczby(String a,TextView wyswietlacz) {
-        if(rowna==true){
-            wysw="";
-            rowna=false;
-        }
+
+
+        dzialanieuz=false;
         wysw=wysw+a;
         wyswietlacz.setText(wysw);
+
     }
 }
