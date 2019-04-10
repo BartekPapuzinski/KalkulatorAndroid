@@ -276,14 +276,14 @@
         app:layout_constraintVertical_bias="0.37" />
 
     <Button
-        android:id="@+id/button27"
+        android:id="@+id/PrzyciskNawiaszOtwierajacy"
         android:layout_width="58dp"
         android:layout_height="55dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="6dp"
         android:layout_marginBottom="8dp"
-        android:text="//"
+        android:text="("
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.254"
@@ -292,14 +292,14 @@
         app:layout_constraintVertical_bias="0.222" />
 
     <Button
-        android:id="@+id/button28"
+        android:id="@+id/PrzyciskNawiaszZmykajacy"
         android:layout_width="58dp"
         android:layout_height="55dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="//"
+        android:text=")"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

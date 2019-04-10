@@ -9,10 +9,9 @@ import android.widget.TextView;
 public class Zaawansowany extends AppCompatActivity {
 
     String wysw="";
-    String dzialanie="";
+    int liczniknawiaskow=0;
     boolean dzialanieuz=true;
     boolean trygonometria =false;
-    boolean minus=true;
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
@@ -49,6 +48,8 @@ public class Zaawansowany extends AppCompatActivity {
         final Button przycisk9 =findViewById(R.id.Przycisk9);
         final Button przyciskpi =findViewById(R.id.PrzyciskPi);
         final Button przyciskkropka =findViewById(R.id.PrzyciskKropka);
+        final Button przycisknawiaszamykajacy =findViewById(R.id.PrzyciskNawiaszZmykajacy);
+        final Button przycisknawiasotwierajacy =findViewById(R.id.PrzyciskNawiaszOtwierajacy);
         final Button przyciskac =findViewById(R.id.PrzyciskAC);
         final Button przyciskc =findViewById(R.id.PrzyciskC);
         final Button przyciskplus =findViewById(R.id.PrzyciskPlus);
@@ -61,6 +62,12 @@ public class Zaawansowany extends AppCompatActivity {
         final Button przyciskxdo2 =findViewById(R.id.PrzyciskXdo2);
         final Button przycisksin =findViewById(R.id.PrzyciskSin);
         final Button przyciskcos =findViewById(R.id.PrzyciskCos);
+        final Button przycisktan =findViewById(R.id.PrzyciskTan);
+        final Button przyciskln =findViewById(R.id.PrzyciskLn);
+        final Button przycisklog =findViewById(R.id.PrzyciskLog);
+        final Button przyciskxdoy =findViewById(R.id.PrzyciskXdoy);
+
+
 
         final Kalkulator kalkulator = new Kalkulator();
         przycisk0.setOnClickListener(new View.OnClickListener()
@@ -183,13 +190,40 @@ public class Zaawansowany extends AppCompatActivity {
 
             }
         });
+
+        przycisknawiaszamykajacy.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                if(dzialanieuz==false && liczniknawiaskow>0)
+                {
+                    wysw+=")";
+                    wyswietlacz.setText(wysw);
+                    trygonometria =false;
+                    liczniknawiaskow--;
+                }
+            }
+        });
+        przycisknawiasotwierajacy.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+
+                    wysw+="(";
+                    wyswietlacz.setText(wysw);
+                    trygonometria =false;
+                    liczniknawiaskow++;
+
+            }
+        });
         przyciskac.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
                 wysw="";
-                dzialanie="";
                 wyswietlacz.setText(wysw);
 
             }
@@ -199,7 +233,19 @@ public class Zaawansowany extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(!wysw.equals("")) {
-                    wysw = wysw.substring(0, wysw.length() - 1);
+                    String[] temp = wysw.split(" ");
+                    wysw="";
+                    for(int i=0;i<temp.length-1;i++)
+                    {
+                        if(i==temp.length-1){
+                            wysw+=temp[i];
+                        }
+                        else {
+                            wysw += temp[i] + " ";
+                        }
+                    }
+                    //if + - * /
+                    //if te z nawiasem
                     wyswietlacz.setText(wysw);
                 }
 
@@ -221,16 +267,12 @@ public class Zaawansowany extends AppCompatActivity {
             public void onClick(View v)
             {
 
-                if(dzialanieuz==true){
+                if(dzialanieuz==true || trygonometria==true){
 
                 }
                 else {
-                    if(trygonometria==true){
-                        wysw+=")";
-                        trygonometria =false;
-                    }
+
                     wysw += " + ";
-                    dzialanie += " +";
                     wyswietlacz.setText(wysw);
                     dzialanieuz=true;
                 }
@@ -242,23 +284,16 @@ public class Zaawansowany extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                if(dzialanieuz==true){
-
+                if(dzialanieuz==true || trygonometria==true){
+                    wysw += "-";
+                    wyswietlacz.setText(wysw);
+                    dzialanieuz = false;
+                    trygonometria = false;
                 }
                 else {
-                    if(trygonometria==true){
-                        wysw+=")";
-                        trygonometria =false;
-                    }
-                    wysw += " - ";
-                    dzialanie += " -";
-                    wyswietlacz.setText(wysw);
-                    dzialanieuz=true;
-                }
-                if(trygonometria ==true && minus==true){
-                    wysw+="-";
-                    wyswietlacz.setText(wysw);
-                    minus=false;
+                        wysw += " - ";
+                        wyswietlacz.setText(wysw);
+                        dzialanieuz = true;
                 }
 
             }
@@ -268,16 +303,12 @@ public class Zaawansowany extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                if(dzialanieuz==true){
+                if(dzialanieuz==true || trygonometria==true){
 
                 }
                 else {
-                    if(trygonometria==true){
-                        wysw+=")";
-                        trygonometria =false;
-                    }
+
                     wysw += " * ";
-                    dzialanie += " *";
                     wyswietlacz.setText(wysw);
                     dzialanieuz=true;
                 }
@@ -289,16 +320,12 @@ public class Zaawansowany extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                if(dzialanieuz==true){
+                if(dzialanieuz==true || trygonometria==true){
 
                 }
                 else {
-                    if(trygonometria==true){
-                        wysw+=")";
-                        trygonometria =false;
-                    }
+
                     wysw += " / ";
-                    dzialanie += " /";
                     wyswietlacz.setText(wysw);
                     dzialanieuz=true;
                 }
@@ -311,14 +338,10 @@ public class Zaawansowany extends AppCompatActivity {
             public void onClick(View v)
             {
 
-                wysw += " sqrt (";
-                dzialanie += " sqrt";
+                wysw += "sqrt (";
                 wyswietlacz.setText(wysw);
                 trygonometria =true;
-                minus=false;
-
-
-
+                liczniknawiaskow++;
 
             }
         });
@@ -328,10 +351,9 @@ public class Zaawansowany extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                    wysw += " ^2";
-                    dzialanie += " ^2";
-                    wyswietlacz.setText(wysw);
-                    dzialanieuz=true;
+                wysw += " ^2";
+                wyswietlacz.setText(wysw);
+                dzialanieuz=true;
 
 
 
@@ -342,11 +364,10 @@ public class Zaawansowany extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                    wysw += "sin (";
-                    dzialanie += " sin";
-                    wyswietlacz.setText(wysw);
-                    trygonometria =true;
-                    minus=true;
+                wysw += "sin (";
+                wyswietlacz.setText(wysw);
+                trygonometria =true;
+                liczniknawiaskow++;
 
             }
         });
@@ -356,10 +377,55 @@ public class Zaawansowany extends AppCompatActivity {
             public void onClick(View v) {
 
                     wysw += "cos (";
-                    dzialanie += " cos";
-                    wyswietlacz.setText(wysw);
-                    trygonometria =true;
-                    minus=true;
+                wyswietlacz.setText(wysw);
+                trygonometria =true;
+                liczniknawiaskow++;
+            }
+        });
+        przycisktan.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) {
+
+                wysw += "tan (";
+                wyswietlacz.setText(wysw);
+                trygonometria =true;
+                liczniknawiaskow++;
+
+            }
+        });
+        przyciskln.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) {
+
+                wysw += "ln (";
+                wyswietlacz.setText(wysw);
+                trygonometria =true;
+                liczniknawiaskow++;
+
+            }
+        });
+        przycisklog.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) {
+
+                wysw += "log (";
+                wyswietlacz.setText(wysw);
+                trygonometria =true;
+                liczniknawiaskow++;
+
+            }
+        });
+        przyciskxdoy.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) {
+
+                wysw += " ^";
+                wyswietlacz.setText(wysw);
+                trygonometria =true;
 
             }
         });
@@ -368,15 +434,16 @@ public class Zaawansowany extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                if(trygonometria==true){
+                for(int i=0;i<liczniknawiaskow;i++)
+                {
                     wysw+=")";
-                    trygonometria =false;
                 }
                 String temp=kalkulator.rowna(wysw);
                 wysw=temp;
                 wyswietlacz.setText(wysw);
-
-
+                liczniknawiaskow=0;
+                dzialanieuz=true;
+                trygonometria =false;
             }
         });
 
@@ -384,7 +451,7 @@ public class Zaawansowany extends AppCompatActivity {
 
     private void liczby(String a,TextView wyswietlacz) {
 
-
+        trygonometria=false;
         dzialanieuz=false;
         wysw=wysw+a;
         wyswietlacz.setText(wysw);
