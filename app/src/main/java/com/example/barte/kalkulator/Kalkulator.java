@@ -188,12 +188,6 @@ public class Kalkulator extends AppCompatActivity {
                 }
             } while (index != -1);
 
-            if (obliczenia[0].length() > 13 && obliczenia[0].charAt(0) != '-') {
-                obliczenia[0] = obliczenia[0].substring(0, 13);
-            } else if (obliczenia[0].length() > 14 && obliczenia[0].charAt(0) == '-') {
-                obliczenia[0] = obliczenia[0].substring(0, 14);
-            }
-
             return obliczenia[0];
         }
         catch (Exception e){

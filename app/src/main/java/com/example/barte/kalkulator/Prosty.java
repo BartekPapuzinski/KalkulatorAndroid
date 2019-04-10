@@ -9,11 +9,9 @@ import android.widget.TextView;
 
 public class Prosty extends AppCompatActivity {
 
+    final Kalkulator kalkulator = new Kalkulator();
     String wysw="";
-    String temp;
-    String dzialanie="";
-    boolean dzialanieuzyte=false;
-    boolean rowna=false;
+    boolean dzialanieuz=false;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prosty);
@@ -154,9 +152,7 @@ public class Prosty extends AppCompatActivity {
             public void onClick(View v)
             {
                 wysw="";
-                temp="";
-                dzialanie="";
-                dzialanieuzyte=false;
+                dzialanieuz=true;
                 wyswietlacz.setText(wysw);
 
             }
@@ -165,46 +161,43 @@ public class Prosty extends AppCompatActivity {
         {
             @Override
             public void onClick(View v) {
-                if(!wysw.equals("")) {
-                    wysw = wysw.substring(0, wysw.length() - 1);
-                    wyswietlacz.setText(wysw);
-                }
+                    if(!wysw.equals("")) {
+                        String[] temp = wysw.split(" ");
+                        wysw="";
+                        for(int i=0;i<temp.length-1;i++)
+                        {
+                            if(i==temp.length-1){
+                                wysw+=temp[i];
+                            }
+                            else {
+                                wysw += temp[i] + " ";
+                            }
+                        }
+                        if(temp[temp.length]=="+" || temp[temp.length]=="-" || temp[temp.length]=="*" || temp[temp.length]=="/"){
+                            dzialanieuz=false;
+                        }
+                        wyswietlacz.setText(wysw);
+                    }
 
 
             }
         });
-//test gita
-        przyciskplusminus.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v) {
-                if(wysw.length()==0)
-                {
 
-                }
-                else {
-                    double a = Double.parseDouble(wysw) * (-1);
-                    wysw = Double.toString(a);
-                    wyswietlacz.setText(wysw);
-                }
-
-
-            }
-        });
         przyciskplus.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                if(dzialanieuzyte==true)
-                {
-                    przyciskrowna.callOnClick();
+
+                if(dzialanieuz==true){
+
                 }
-                temp=wysw;
-                dzialanie="+";
-                wysw="";
-                rowna=false;
-                dzialanieuzyte=true;
+                else {
+
+                    wysw += " + ";
+                    wyswietlacz.setText(wysw);
+                    dzialanieuz=true;
+                }
 
             }
         });
@@ -213,15 +206,16 @@ public class Prosty extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                if(dzialanieuzyte==true)
-                {
-                    przyciskrowna.callOnClick();
+                if(dzialanieuz==true){
+                    wysw += "-";
+                    wyswietlacz.setText(wysw);
+                    dzialanieuz = false;
                 }
-                temp=wysw;
-                dzialanie="-";
-                wysw="";
-                rowna=false;
-                dzialanieuzyte=true;
+                else {
+                    wysw += " - ";
+                    wyswietlacz.setText(wysw);
+                    dzialanieuz = true;
+                }
 
             }
         });
@@ -230,15 +224,15 @@ public class Prosty extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                if(dzialanieuzyte==true)
-                {
-                    przyciskrowna.callOnClick();
+                if(dzialanieuz==true){
+
                 }
-                temp=wysw;
-                dzialanie="*";
-                wysw="";
-                rowna=false;
-                dzialanieuzyte=true;
+                else {
+
+                    wysw += " * ";
+                    wyswietlacz.setText(wysw);
+                    dzialanieuz=true;
+                }
 
             }
         });
@@ -247,90 +241,35 @@ public class Prosty extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                if(dzialanieuzyte==true)
-                {
-                    przyciskrowna.callOnClick();
+                if(dzialanieuz==true){
+
                 }
-                temp=wysw;
-                dzialanie="/";
-                wysw="";
-                rowna=false;
-                dzialanieuzyte=true;
+                else {
+
+                    wysw += " / ";
+                    wyswietlacz.setText(wysw);
+                    dzialanieuz=true;
+                }
 
             }
+
         });
         przyciskrowna.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                if(dzialanie.equals("+")){
-                    String temp2=wysw;
-                    double a=Double.parseDouble(temp)+Double.parseDouble(wysw);
-                    wysw=Double.toString(a);
-                    wyswietlacz.setText(wysw);
-                    rowna=true;
-                    if(dzialanieuzyte==true){
-                        temp=temp2;
-                    }
-
-                }
-                if(dzialanie.equals("-")) {
-                    String temp2 = wysw;
-                    if(rowna==false) {
-                        double a = Double.parseDouble(temp) - Double.parseDouble(wysw);
-                        wysw = Double.toString(a);
-                        wyswietlacz.setText(wysw);
-                        rowna=true;
-                    }
-                    else if(rowna==true) {
-                        double a = Double.parseDouble(wysw) - Double.parseDouble(temp);
-                        wysw = Double.toString(a);
-                        wyswietlacz.setText(wysw);
-                    }
-                    if (dzialanieuzyte == true) {
-                        temp = temp2;
-                    }
-                }
-                if(dzialanie.equals("*")) {
-                    String temp2 = wysw;
-                    double a = Double.parseDouble(temp) * Double.parseDouble(wysw);
-                    wysw = Double.toString(a);
-                    wyswietlacz.setText(wysw);
-                    rowna=true;
-                    if (dzialanieuzyte == true) {
-                        temp = temp2;
-                    }
-                }
-                if(dzialanie.equals("/")) {
-                    String temp2 = wysw;
-                    if(rowna==false) {
-                        double a = Double.parseDouble(temp) / Double.parseDouble(wysw);
-                        wysw = Double.toString(a);
-                        wyswietlacz.setText(wysw);
-                        rowna=true;
-                    }
-                    else if(rowna==true) {
-                        double a = Double.parseDouble(wysw) / Double.parseDouble(temp);
-                        wysw = Double.toString(a);
-                        wyswietlacz.setText(wysw);
-                    }
-                    if (dzialanieuzyte == true) {
-                        temp = temp2;
-                    }
-                }
-                dzialanieuzyte=false;
-
+                String temp=kalkulator.rowna(wysw);
+                wysw=temp;
+                wyswietlacz.setText(wysw);
+                dzialanieuz=true;
             }
         });
 
     }
 
     private void liczby(String a,TextView wyswietlacz) {
-        if(rowna==true){
-            wysw="";
-            rowna=false;
-        }
+        dzialanieuz=false;
         wysw=wysw+a;
         wyswietlacz.setText(wysw);
     }

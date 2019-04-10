@@ -224,6 +224,9 @@ public class Zaawansowany extends AppCompatActivity {
             public void onClick(View v)
             {
                 wysw="";
+                liczniknawiaskow=0;
+                dzialanieuz=true;
+                trygonometria =false;
                 wyswietlacz.setText(wysw);
 
             }
@@ -244,8 +247,23 @@ public class Zaawansowany extends AppCompatActivity {
                             wysw += temp[i] + " ";
                         }
                     }
-                    //if + - * /
-                    //if te z nawiasem
+                    if(temp[temp.length-1]=="+" || temp[temp.length-1]=="-" || temp[temp.length-1]=="*" || temp[temp.length-1]=="/" || temp[temp.length-1].charAt(0)=='^'){
+                        dzialanieuz=false;
+                    }
+                    if(temp[temp.length-1]=="("){
+                        liczniknawiaskow--;
+                        trygonometria=true;
+                    }
+
+                    if(temp[temp.length-1]==")"){
+                        liczniknawiaskow++;
+                        trygonometria=true;
+                    }
+                    if(temp[temp.length-1]=="sin" || temp[temp.length-1]=="cos" || temp[temp.length-1]=="tan" || temp[temp.length-1]=="sqrt" || temp[temp.length-1]=="log" || temp[temp.length-1]=="ln"){
+
+                        trygonometria=false;
+                    }
+
                     wyswietlacz.setText(wysw);
                 }
 
@@ -287,8 +305,6 @@ public class Zaawansowany extends AppCompatActivity {
                 if(dzialanieuz==true || trygonometria==true){
                     wysw += "-";
                     wyswietlacz.setText(wysw);
-                    dzialanieuz = false;
-                    trygonometria = false;
                 }
                 else {
                         wysw += " - ";
@@ -425,7 +441,7 @@ public class Zaawansowany extends AppCompatActivity {
 
                 wysw += " ^";
                 wyswietlacz.setText(wysw);
-                trygonometria =true;
+                dzialanieuz =true;
 
             }
         });
@@ -439,7 +455,10 @@ public class Zaawansowany extends AppCompatActivity {
                     wysw+=")";
                 }
                 String temp=kalkulator.rowna(wysw);
-                wysw=temp;
+                double x = Double.parseDouble(temp);
+                x=Math.round(x*10000000000000.0)/10000000000000.0;
+
+                wysw=String.valueOf(x);
                 wyswietlacz.setText(wysw);
                 liczniknawiaskow=0;
                 dzialanieuz=true;
