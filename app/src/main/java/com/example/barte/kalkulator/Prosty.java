@@ -166,6 +166,12 @@ public class Prosty extends AppCompatActivity {
 
             }
         });
+        przyciskplusminus.setOnClickListener(new View.OnClickListener() {
+
+            @Override public void onClick(View v) {
+
+            }
+        });
 
         przyciskplus.setOnClickListener(new View.OnClickListener() {
 

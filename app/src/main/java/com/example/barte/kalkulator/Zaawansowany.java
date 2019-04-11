@@ -240,8 +240,7 @@ public class Zaawansowany extends AppCompatActivity {
         przyciskplusminus.setOnClickListener(new View.OnClickListener() {
 
             @Override public void onClick(View v) {
-                wysw = kalkulator.plusminus(wysw);
-                wyswietlacz.setText(wysw);
+
             }
         });
         przyciskplus.setOnClickListener(new View.OnClickListener() {
