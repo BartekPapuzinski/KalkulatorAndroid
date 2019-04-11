@@ -73,7 +73,6 @@ public class Kalkulator extends AppCompatActivity {
         try {
             int index;
             String[] obliczenia = wysw.split(" ");
-            System.out.println(wysw);
 
             do {
                 index = szukanienawiasotwierajacy(obliczenia, '(');

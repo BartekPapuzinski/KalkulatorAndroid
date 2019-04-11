@@ -16,11 +16,16 @@ public class Zaawansowany extends AppCompatActivity {
     @Override protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putString("wysw", wysw);
+        outState.putBoolean("dzialanieuz",dzialanieuz);
+        outState.putBoolean("trygonometria",trygonometria);
+        outState.putInt("licznikanawiasow",liczniknawiaskow);
     }
 
     @Override protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        String wysw1 = savedInstanceState.getString("wysw");
-        wysw = wysw1;
+        wysw = savedInstanceState.getString("wysw");
+        dzialanieuz = savedInstanceState.getBoolean("dzialanieuz");
+        trygonometria = savedInstanceState.getBoolean("trygonometria");
+        liczniknawiaskow = savedInstanceState.getInt("liczniknawiasow");
         final TextView wyswietlacz = findViewById(R.id.Wyswietlacz);
         wyswietlacz.setText(wysw);
         super.onRestoreInstanceState(savedInstanceState);

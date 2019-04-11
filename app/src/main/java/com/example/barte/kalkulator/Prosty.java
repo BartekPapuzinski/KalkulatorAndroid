@@ -16,11 +16,12 @@ public class Prosty extends AppCompatActivity {
     @Override protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putString("wysw", wysw);
+        outState.putBoolean("dzialanieuz",dzialanieuz);
     }
 
     @Override protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        String wysw1 = savedInstanceState.getString("wysw");
-        wysw = wysw1;
+        wysw = savedInstanceState.getString("wysw");
+        dzialanieuz = savedInstanceState.getBoolean("dzialanieuz");
         final TextView wyswietlacz = findViewById(R.id.Wyswietlacz);
         wyswietlacz.setText(wysw);
         super.onRestoreInstanceState(savedInstanceState);
