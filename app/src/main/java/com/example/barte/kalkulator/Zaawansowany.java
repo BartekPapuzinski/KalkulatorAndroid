@@ -176,17 +176,15 @@ public class Zaawansowany extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                int x=wysw.indexOf(".");
-                if(x==(-1))
-                {
+                String[] temp = wysw.split(" ");
+                int x=temp[temp.length-1].indexOf(".");
+                if(x==-1)
                     if(wyswietlacz.length()==0) {
                         liczby("0.", wyswietlacz);
                     }
-                    else{
+                    else if(dzialanieuz==false && trygonometria==false){
                         liczby(".", wyswietlacz);
                     }
-                }
-
 
             }
         });
