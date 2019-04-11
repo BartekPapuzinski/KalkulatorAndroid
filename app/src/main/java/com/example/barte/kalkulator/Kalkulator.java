@@ -12,23 +12,6 @@ public class Kalkulator extends AppCompatActivity {
 
     int index;
 
-    public static String[] obliczeniaxmiejscowe(String[] obliczenia, int index, String wartosc, int iloscmiejsc) {
-        String[] tempobliczenia = obliczenia.clone();
-        obliczenia = new String[tempobliczenia.length - iloscmiejsc];
-        int j = 0;
-        for (int i = 0; i < tempobliczenia.length; i++) {
-            if (i == index) {
-                obliczenia[j] = wartosc;
-                i += iloscmiejsc;
-            } else {
-                obliczenia[j] = tempobliczenia[i];
-            }
-            j++;
-
-        }
-        return obliczenia;
-    }
-
     public String dodawanie(String a, String b) {
         return String.valueOf(Double.parseDouble(a) + Double.parseDouble(b));
     }
@@ -92,7 +75,7 @@ public class Kalkulator extends AppCompatActivity {
             String[] obliczenia = wysw.split(" ");
             System.out.println(wysw);
 
-            do {//nawiasy ?
+            do {
                 index = szukanienawiasotwierajacy(obliczenia, '(');
                 int index2 = szukanienawiaszamykajacy(obliczenia, ')');
                 if (index != -1) {
@@ -268,6 +251,23 @@ public class Kalkulator extends AppCompatActivity {
             }
         }
         return -1;
+    }
+
+    public static String[] obliczeniaxmiejscowe(String[] obliczenia, int index, String wartosc, int iloscmiejsc) {
+        String[] tempobliczenia = obliczenia.clone();
+        obliczenia = new String[tempobliczenia.length - iloscmiejsc];
+        int j = 0;
+        for (int i = 0; i < tempobliczenia.length; i++) {
+            if (i == index) {
+                obliczenia[j] = wartosc;
+                i += iloscmiejsc;
+            } else {
+                obliczenia[j] = tempobliczenia[i];
+            }
+            j++;
+
+        }
+        return obliczenia;
     }
 
 }
