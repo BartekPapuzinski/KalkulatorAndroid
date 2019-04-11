@@ -8,54 +8,84 @@ import java.io.StringWriter;
 
 import static java.lang.Math.*;
 
-
 public class Kalkulator extends AppCompatActivity {
 
     int index;
 
-    public String dodawanie(String a,String b){
-        return String.valueOf(Double.parseDouble(a)+Double.parseDouble(b));
+    public static String[] obliczeniaxmiejscowe(String[] obliczenia, int index, String wartosc, int iloscmiejsc) {
+        String[] tempobliczenia = obliczenia.clone();
+        obliczenia = new String[tempobliczenia.length - iloscmiejsc];
+        int j = 0;
+        for (int i = 0; i < tempobliczenia.length; i++) {
+            if (i == index) {
+                obliczenia[j] = wartosc;
+                i += iloscmiejsc;
+            } else {
+                obliczenia[j] = tempobliczenia[i];
+            }
+            j++;
+
+        }
+        return obliczenia;
     }
-    public String odejmowanie(String a,String b){
-        return String.valueOf(Double.parseDouble(a)-Double.parseDouble(b));
+
+    public String dodawanie(String a, String b) {
+        return String.valueOf(Double.parseDouble(a) + Double.parseDouble(b));
     }
-    public String mnozenie(String a,String b ){
-        return String.valueOf(Double.parseDouble(a)*Double.parseDouble(b));
+
+    public String odejmowanie(String a, String b) {
+        return String.valueOf(Double.parseDouble(a) - Double.parseDouble(b));
     }
-    public String dzielenie(String a,String b){
-        return String.valueOf(Double.parseDouble(a)/Double.parseDouble(b));
+
+    public String mnozenie(String a, String b) {
+        return String.valueOf(Double.parseDouble(a) * Double.parseDouble(b));
     }
+
+    public String dzielenie(String a, String b) {
+        return String.valueOf(Double.parseDouble(a) / Double.parseDouble(b));
+    }
+
     public String xdo2(String a) {
-        return String.valueOf((Double.parseDouble(a))*(Double.parseDouble(a)));
+        return String.valueOf((Double.parseDouble(a)) * (Double.parseDouble(a)));
     }
-    public String xdoy(String a,String b) {
-        return String.valueOf(pow((Double.parseDouble(a)),(Double.parseDouble(b))));
+
+    public String xdoy(String a, String b) {
+        return String.valueOf(pow((Double.parseDouble(a)), (Double.parseDouble(b))));
     }
+
     public String pierwiastek(String a) {
         return String.valueOf(sqrt(Double.parseDouble(a)));
     }
-    public String plusminus(String a){
-        return String.valueOf((Double.parseDouble(a)*(-1)));
+
+    public String plusminus(String a) {
+        return String.valueOf((Double.parseDouble(a) * (-1)));
     }
-    public String sinus(String a){
+
+    public String sinus(String a) {
         return String.valueOf(sin(Double.parseDouble(a)));
     }
-    public String ln(String a){
+
+    public String ln(String a) {
         return String.valueOf(Math.log(Double.parseDouble(a)));
     }
-    public String log(String a){
+
+    public String log(String a) {
         return String.valueOf(Math.log10(Double.parseDouble(a)));
     }
-    public String cosinus(String a){
+
+    public String cosinus(String a) {
         return String.valueOf(cos(Double.parseDouble(a)));
     }
-    public String tangens(String a){
+
+    public String tangens(String a) {
         return String.valueOf(tan(Double.parseDouble(a)));
     }
-    public String ctg(String a){
-        return String.valueOf((1.0/tan(Double.parseDouble(a))));
+
+    public String ctg(String a) {
+        return String.valueOf((1.0 / tan(Double.parseDouble(a))));
     }
-    public String rowna(String wysw){
+
+    public String rowna(String wysw) {
 
         try {
             int index;
@@ -88,206 +118,156 @@ public class Kalkulator extends AppCompatActivity {
                         obliczenia = obliczeniaxmiejscowe(obliczenia, index, wartosc, index2 - index);
                     }
                 }
-            } while (index != -1);
+            }
+            while (index != -1);
 
-            if(wysw.equals("error")){
-                return "error";
+            if (wysw.equals("Niedozwolone działanie")) {
+                return "Niedozwolone działanie";
             }
 
             do {
                 index = szukanie(obliczenia, "sin");
                 if (index != -1) {
                     String wartosc = sinus(obliczenia[index + 1]);
-                    obliczenia = obliczeniadwumiejscowe(obliczenia, index, wartosc);
+                    obliczenia = obliczeniaxmiejscowe(obliczenia, index, wartosc, 1);
                 }
-            } while (index != -1);
+            }
+            while (index != -1);
 
             do {
                 index = szukanie(obliczenia, "cos");
                 if (index != -1) {
                     String wartosc = cosinus(obliczenia[index + 1]);
-                    obliczenia = obliczeniadwumiejscowe(obliczenia, index, wartosc);
+                    obliczenia = obliczeniaxmiejscowe(obliczenia, index, wartosc, 1);
                 }
-            } while (index != -1);
+            }
+            while (index != -1);
 
             do {
                 index = szukanie(obliczenia, "tan");
                 if (index != -1) {
                     String wartosc = tangens(obliczenia[index + 1]);
-                    obliczenia = obliczeniadwumiejscowe(obliczenia, index, wartosc);
+                    obliczenia = obliczeniaxmiejscowe(obliczenia, index, wartosc, 1);
                 }
-            } while (index != -1);
+            }
+            while (index != -1);
 
             do {
                 index = szukanie(obliczenia, "sqrt");
                 if (index != -1) {
+                    if (Double.parseDouble(obliczenia[index + 1]) < 0) {
+                        throw new IllegalArgumentException("Niedozwolone działanie");
+                    }
                     String wartosc = pierwiastek(obliczenia[index + 1]);
-                    obliczenia = obliczeniadwumiejscowe(obliczenia, index, wartosc);
+                    obliczenia = obliczeniaxmiejscowe(obliczenia, index, wartosc, 1);
                 }
-            } while (index != -1);
+            }
+            while (index != -1);
 
             do {
                 index = szukanie(obliczenia, "ln");
                 if (index != -1) {
+                    if (Double.parseDouble(obliczenia[index + 1]) < 0) {
+                        throw new IllegalArgumentException("Niedozwolone działanie");
+                    }
                     String wartosc = ln(obliczenia[index + 1]);
-                    obliczenia = obliczeniadwumiejscowe(obliczenia, index, wartosc);
+                    obliczenia = obliczeniaxmiejscowe(obliczenia, index, wartosc, 1);
                 }
-            } while (index != -1);
+            }
+            while (index != -1);
 
             do {
                 index = szukanie(obliczenia, "log");
                 if (index != -1) {
+                    if (Double.parseDouble(obliczenia[index + 1]) < 0) {
+                        throw new IllegalArgumentException("Niedozwolone działanie");
+                    }
                     String wartosc = log(obliczenia[index + 1]);
-                    obliczenia = obliczeniadwumiejscowe(obliczenia, index, wartosc);
+                    obliczenia = obliczeniaxmiejscowe(obliczenia, index, wartosc, 1);
                 }
-            } while (index != -1);
-
+            }
+            while (index != -1);
 
             do {
                 index = szukanienawiasotwierajacy(obliczenia, '^');
 
                 if (index != -1) {
                     String wartosc = xdoy(obliczenia[index - 1], obliczenia[index].substring(1, obliczenia[index].length()));
-                    obliczenia = obliczeniadwumiejscowe(obliczenia, index - 1, wartosc);
+                    obliczenia = obliczeniaxmiejscowe(obliczenia, index - 1, wartosc, 1);
                 }
-            } while (index != -1);
-
+            }
+            while (index != -1);
 
             do {
                 index = szukanie(obliczenia, "*");
                 if (index != -1) {
                     String wartosc = mnozenie(obliczenia[index - 1], obliczenia[index + 1]);
-                    obliczenia = obliczeniatrzymiejscowe(obliczenia, index, wartosc);
+                    obliczenia = obliczeniaxmiejscowe(obliczenia, index - 1, wartosc, 2);
                 }
-            } while (index != -1);
+            }
+            while (index != -1);
 
             do {
                 index = szukanie(obliczenia, "/");
                 if (index != -1) {
                     if (Double.parseDouble(obliczenia[index + 1]) == 0) {
-                        throw new IllegalArgumentException("Nie dziel przez zero!");
+                        throw new IllegalArgumentException("Niedozwolone działanie");
                     }
                     String wartosc = dzielenie(obliczenia[index - 1], obliczenia[index + 1]);
-                    obliczenia = obliczeniatrzymiejscowe(obliczenia, index, wartosc);
+                    obliczenia = obliczeniaxmiejscowe(obliczenia, index - 1, wartosc, 2);
                 }
-            } while (index != -1);
+            }
+            while (index != -1);
 
             do {
                 index = szukanie(obliczenia, "+");
                 if (index != -1) {
                     String wartosc = dodawanie(obliczenia[index - 1], obliczenia[index + 1]);
-                    obliczenia = obliczeniatrzymiejscowe(obliczenia, index, wartosc);
+                    obliczenia = obliczeniaxmiejscowe(obliczenia, index - 1, wartosc, 2);
                 }
-            } while (index != -1);
+            }
+            while (index != -1);
 
             do {
                 index = szukanie(obliczenia, "-");
                 if (index != -1) {
                     String wartosc = odejmowanie(obliczenia[index - 1], obliczenia[index + 1]);
-                    obliczenia = obliczeniatrzymiejscowe(obliczenia, index, wartosc);
+                    obliczenia = obliczeniaxmiejscowe(obliczenia, index - 1, wartosc, 2);
                 }
-            } while (index != -1);
+            }
+            while (index != -1);
 
             return obliczenia[0];
-        }
-        catch (Exception e){
-            return "error";
+        } catch (Exception e) {
+            return "Niedozwolone działanie";
         }
     }
 
-
-    public static String[] obliczeniadwumiejscowe(String[] obliczenia,int index,String wartosc){
-        String[] tempobliczenia=obliczenia.clone();
-        obliczenia = new String[tempobliczenia.length-1];
-        int j=0;
-        for(int i=0;i<tempobliczenia.length;i++)
-        {
-            if(i==index)
-            {
-                obliczenia[j]=wartosc;
-                i+=1;
-            }
-            else {
-                obliczenia[j] = tempobliczenia[i];
-            }
-            j++;
-
-        }
-        return obliczenia;
-    }
-    public static String[] obliczeniaxmiejscowe(String[] obliczenia,int index,String wartosc,int iloscmiejsc){
-        String[] tempobliczenia=obliczenia.clone();
-        obliczenia = new String[tempobliczenia.length-iloscmiejsc];
-        int j=0;
-        for(int i=0;i<tempobliczenia.length;i++)
-        {
-            if(i==index)
-            {
-                obliczenia[j]=wartosc;
-                i+=iloscmiejsc;
-            }
-            else {
-                obliczenia[j] = tempobliczenia[i];
-            }
-            j++;
-
-        }
-        return obliczenia;
-    }
-
-
-
-    public static String[] obliczeniatrzymiejscowe(String[] obliczenia,int index, String wartosc){
-        String[] tempobliczenia=obliczenia.clone();
-        obliczenia = new String[tempobliczenia.length-2];
-        int j=0;
-        for(int i=0;i<tempobliczenia.length;i++)
-        {
-
-            if(i==index-1)
-            {
-                obliczenia[j]=wartosc;
-                i+=2;
-
-            }
-            else {
-                obliczenia[j] = tempobliczenia[i];
-            }
-            j++;
-
-        }
-        return obliczenia;
-    }
-
-
-    public int szukanie(String[] obliczenia,String klucz){
-        for(int i=0;i<obliczenia.length;i++)
-        {
-            if(obliczenia[i].equals(klucz)) {
-                return i;
-            }
-        }
-        return -1;
-    }
-    public int szukanienawiasotwierajacy(String[] obliczenia,char klucz){
-        for(int i=0;i<obliczenia.length;i++)
-        {
-            if(obliczenia[i].charAt(0)==klucz) {
-                return i;
-            }
-        }
-        return -1;
-    }
-    public int szukanienawiaszamykajacy(String[] obliczenia,char klucz){
-        for(int i=obliczenia.length-1;i>=0;i--)
-        {
-            if(obliczenia[i].charAt(obliczenia[i].length()-1)==klucz) {
+    public int szukanie(String[] obliczenia, String klucz) {
+        for (int i = 0; i < obliczenia.length; i++) {
+            if (obliczenia[i].equals(klucz)) {
                 return i;
             }
         }
         return -1;
     }
 
+    public int szukanienawiasotwierajacy(String[] obliczenia, char klucz) {
+        for (int i = 0; i < obliczenia.length; i++) {
+            if (obliczenia[i].charAt(0) == klucz) {
+                return i;
+            }
+        }
+        return -1;
+    }
 
+    public int szukanienawiaszamykajacy(String[] obliczenia, char klucz) {
+        for (int i = obliczenia.length - 1; i >= 0; i--) {
+            if (obliczenia[i].charAt(obliczenia[i].length() - 1) == klucz) {
+                return i;
+            }
+        }
+        return -1;
+    }
 
 }

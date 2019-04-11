@@ -7,8 +7,8 @@ import static org.junit.Assert.*;
 public class KalkulatorTest {
 
     Kalkulator kalkulator = new Kalkulator();
-    @Test
-    public void sintest() {
+
+    @Test public void sintest() {
         String wejscie1 = "sin (25 + 45 / 6)";
         String wejscie2 = "sin (25 ^2)";
         String wejscie3 = "sin (sin (sqrt (2 ^2)))";
@@ -21,13 +21,18 @@ public class KalkulatorTest {
         String wyjscie4 = "-0.1323517501";
         String wyjscie5 = "0.35743821481";
 
-
-        assertEquals(wyjscie1,String.valueOf((Math.round((Double.parseDouble(kalkulator.rowna(wejscie1)))*100000000000.0))/100000000000.0));
-        assertEquals(wyjscie2,String.valueOf((Math.round((Double.parseDouble(kalkulator.rowna(wejscie2)))*100000000000.0))/100000000000.0));
-        assertEquals(wyjscie3,String.valueOf((Math.round((Double.parseDouble(kalkulator.rowna(wejscie3)))*100000000000.0))/100000000000.0));
-        assertEquals(wyjscie4,String.valueOf((Math.round((Double.parseDouble(kalkulator.rowna(wejscie4)))*100000000000.0))/100000000000.0));
-        assertEquals(wyjscie5,String.valueOf((Math.round((Double.parseDouble(kalkulator.rowna(wejscie5)))*100000000000.0))/100000000000.0));
+        assertEquals(wyjscie1,
+                String.valueOf((Math.round((Double.parseDouble(kalkulator.rowna(wejscie1))) * 100000000000.0)) / 100000000000.0));
+        assertEquals(wyjscie2,
+                String.valueOf((Math.round((Double.parseDouble(kalkulator.rowna(wejscie2))) * 100000000000.0)) / 100000000000.0));
+        assertEquals(wyjscie3,
+                String.valueOf((Math.round((Double.parseDouble(kalkulator.rowna(wejscie3))) * 100000000000.0)) / 100000000000.0));
+        assertEquals(wyjscie4,
+                String.valueOf((Math.round((Double.parseDouble(kalkulator.rowna(wejscie4))) * 100000000000.0)) / 100000000000.0));
+        assertEquals(wyjscie5,
+                String.valueOf((Math.round((Double.parseDouble(kalkulator.rowna(wejscie5))) * 100000000000.0)) / 100000000000.0));
     }
+
     @Test public void costest() {
         String wejscie1 = "cos (36 * 2 ^3)";
         String wejscie2 = "cos (cos (sqrt (12 ^4)))";
@@ -41,13 +46,19 @@ public class KalkulatorTest {
         String wyjscie4 = "0.43103729799";
         String wyjscie5 = "-0.02801579782";
 
-        assertEquals(wyjscie1,String.valueOf((Math.round((Double.parseDouble(kalkulator.rowna(wejscie1)))*100000000000.0))/100000000000.0));
-        assertEquals(wyjscie2,String.valueOf((Math.round((Double.parseDouble(kalkulator.rowna(wejscie2)))*100000000000.0))/100000000000.0));
-        assertEquals(wyjscie3,String.valueOf((Math.round((Double.parseDouble(kalkulator.rowna(wejscie3)))*100000000000.0))/100000000000.0));
-        assertEquals(wyjscie4,String.valueOf((Math.round((Double.parseDouble(kalkulator.rowna(wejscie4)))*100000000000.0))/100000000000.0));
-        assertEquals(wyjscie5,String.valueOf((Math.round((Double.parseDouble(kalkulator.rowna(wejscie5)))*100000000000.0))/100000000000.0));
+        assertEquals(wyjscie1,
+                String.valueOf((Math.round((Double.parseDouble(kalkulator.rowna(wejscie1))) * 100000000000.0)) / 100000000000.0));
+        assertEquals(wyjscie2,
+                String.valueOf((Math.round((Double.parseDouble(kalkulator.rowna(wejscie2))) * 100000000000.0)) / 100000000000.0));
+        assertEquals(wyjscie3,
+                String.valueOf((Math.round((Double.parseDouble(kalkulator.rowna(wejscie3))) * 100000000000.0)) / 100000000000.0));
+        assertEquals(wyjscie4,
+                String.valueOf((Math.round((Double.parseDouble(kalkulator.rowna(wejscie4))) * 100000000000.0)) / 100000000000.0));
+        assertEquals(wyjscie5,
+                String.valueOf((Math.round((Double.parseDouble(kalkulator.rowna(wejscie5))) * 100000000000.0)) / 100000000000.0));
     }
-    @Test public void powtest(){
+
+    @Test public void powtest() {
         String wejscie1 = "2 ^2";
         String wejscie2 = "2 ^2 ^2";
         String wejscie3 = "3 * 2 ^2";
@@ -60,29 +71,38 @@ public class KalkulatorTest {
         String wyjscie4 = "27.0";
         String wyjscie5 = "4096.0";
 
-        assertEquals(wyjscie1,String.valueOf((Math.round((Double.parseDouble(kalkulator.rowna(wejscie1)))*100000000000.0))/100000000000.0));
-        assertEquals(wyjscie2,String.valueOf((Math.round((Double.parseDouble(kalkulator.rowna(wejscie2)))*100000000000.0))/100000000000.0));
-        assertEquals(wyjscie3,String.valueOf((Math.round((Double.parseDouble(kalkulator.rowna(wejscie3)))*100000000000.0))/100000000000.0));
-        assertEquals(wyjscie4,String.valueOf((Math.round((Double.parseDouble(kalkulator.rowna(wejscie4)))*100000000000.0))/100000000000.0));
-        assertEquals(wyjscie5,String.valueOf((Math.round((Double.parseDouble(kalkulator.rowna(wejscie5)))*100000000000.0))/100000000000.0));
+        assertEquals(wyjscie1,
+                String.valueOf((Math.round((Double.parseDouble(kalkulator.rowna(wejscie1))) * 100000000000.0)) / 100000000000.0));
+        assertEquals(wyjscie2,
+                String.valueOf((Math.round((Double.parseDouble(kalkulator.rowna(wejscie2))) * 100000000000.0)) / 100000000000.0));
+        assertEquals(wyjscie3,
+                String.valueOf((Math.round((Double.parseDouble(kalkulator.rowna(wejscie3))) * 100000000000.0)) / 100000000000.0));
+        assertEquals(wyjscie4,
+                String.valueOf((Math.round((Double.parseDouble(kalkulator.rowna(wejscie4))) * 100000000000.0)) / 100000000000.0));
+        assertEquals(wyjscie5,
+                String.valueOf((Math.round((Double.parseDouble(kalkulator.rowna(wejscie5))) * 100000000000.0)) / 100000000000.0));
     }
-    @Test public void zakazanedzialania(){
+
+    @Test public void zakazanedzialania() {
         String wejscie1 = "6 / 0";
 
-        String wyjscie1 = "error";
+        String wyjscie1 = "Niedozwolone działanie";
+
+        assertEquals(wyjscie1, kalkulator.rowna(wejscie1));
 
     }
 
-    @Test public void pierwistkitest(){
+    @Test public void pierwistkitest() {
         String wejscie1 = "(sqrt (60))";
 
         String wyjscie1 = "7.74596669241";
 
-        assertEquals(wyjscie1,String.valueOf((Math.round((Double.parseDouble(kalkulator.rowna(wejscie1)))*100000000000.0))/100000000000.0));
+        assertEquals(wyjscie1,
+                String.valueOf((Math.round((Double.parseDouble(kalkulator.rowna(wejscie1))) * 100000000000.0)) / 100000000000.0));
 
     }
 
-    @Test public void logarytmy(){
+    @Test public void logarytmy() {
         String wejscie1 = "log (10)";
         String wejscie2 = "ln (10)";
         String wejscie3 = "log (sin (45))";
@@ -95,12 +115,16 @@ public class KalkulatorTest {
         String wyjscie4 = "2.04717228111";
         String wyjscie5 = "4.78114896579";
 
-        assertEquals(wyjscie1,String.valueOf((Math.round((Double.parseDouble(kalkulator.rowna(wejscie1)))*100000000000.0))/100000000000.0));
-        assertEquals(wyjscie2,String.valueOf((Math.round((Double.parseDouble(kalkulator.rowna(wejscie2)))*100000000000.0))/100000000000.0));
-        assertEquals(wyjscie3,String.valueOf((Math.round((Double.parseDouble(kalkulator.rowna(wejscie3)))*100000000000.0))/100000000000.0));
-        assertEquals(wyjscie4,String.valueOf((Math.round((Double.parseDouble(kalkulator.rowna(wejscie4)))*100000000000.0))/100000000000.0));
-        assertEquals(wyjscie5,String.valueOf((Math.round((Double.parseDouble(kalkulator.rowna(wejscie5)))*100000000000.0))/100000000000.0));
-
+        assertEquals(wyjscie1,
+                String.valueOf((Math.round((Double.parseDouble(kalkulator.rowna(wejscie1))) * 100000000000.0)) / 100000000000.0));
+        assertEquals(wyjscie2,
+                String.valueOf((Math.round((Double.parseDouble(kalkulator.rowna(wejscie2))) * 100000000000.0)) / 100000000000.0));
+        assertEquals(wyjscie3,
+                String.valueOf((Math.round((Double.parseDouble(kalkulator.rowna(wejscie3))) * 100000000000.0)) / 100000000000.0));
+        assertEquals(wyjscie4,
+                String.valueOf((Math.round((Double.parseDouble(kalkulator.rowna(wejscie4))) * 100000000000.0)) / 100000000000.0));
+        assertEquals(wyjscie5,
+                String.valueOf((Math.round((Double.parseDouble(kalkulator.rowna(wejscie5))) * 100000000000.0)) / 100000000000.0));
 
     }
 }
