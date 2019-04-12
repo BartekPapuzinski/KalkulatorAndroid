@@ -159,9 +159,16 @@ public class Prosty extends AppCompatActivity {
                             wysw += temp[i] + " ";
                         }
                     }
-                    if (temp[temp.length] == "+" || temp[temp.length] == "-" || temp[temp.length] == "*" || temp[temp.length] == "/") {
+                    if (temp[temp.length - 1] == "+"
+                            || temp[temp.length - 1] == "-"
+                            || temp[temp.length - 1] == "*"
+                            || temp[temp.length - 1] == "/"
+                            ) {
                         dzialanieuz = false;
                     }
+
+
+
                     wyswietlacz.setText(wysw);
                 }
 
@@ -170,6 +177,9 @@ public class Prosty extends AppCompatActivity {
         przyciskplusminus.setOnClickListener(new View.OnClickListener() {
 
             @Override public void onClick(View v) {
+                przyciskrowna.callOnClick();
+                wysw = kalkulator.plusminus(wysw);
+                wyswietlacz.setText(wysw);
 
             }
         });

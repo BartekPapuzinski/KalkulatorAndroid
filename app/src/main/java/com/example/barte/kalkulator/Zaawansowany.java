@@ -12,12 +12,14 @@ public class Zaawansowany extends AppCompatActivity {
     int liczniknawiaskow = 0;
     boolean dzialanieuz = true;
     boolean trygonometria = false;
+    boolean rowna=false;
 
     @Override protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putString("wysw", wysw);
         outState.putBoolean("dzialanieuz",dzialanieuz);
         outState.putBoolean("trygonometria",trygonometria);
+        outState.putBoolean("rowna",rowna);
         outState.putInt("licznikanawiasow",liczniknawiaskow);
     }
 
@@ -26,6 +28,7 @@ public class Zaawansowany extends AppCompatActivity {
         dzialanieuz = savedInstanceState.getBoolean("dzialanieuz");
         trygonometria = savedInstanceState.getBoolean("trygonometria");
         liczniknawiaskow = savedInstanceState.getInt("liczniknawiasow");
+        rowna = savedInstanceState.getBoolean("rowna");
         final TextView wyswietlacz = findViewById(R.id.Wyswietlacz);
         wyswietlacz.setText(wysw);
         super.onRestoreInstanceState(savedInstanceState);
@@ -178,6 +181,10 @@ public class Zaawansowany extends AppCompatActivity {
 
             @Override public void onClick(View v) {
 
+                if(rowna==true){
+                    wysw="";
+                    rowna=false;
+                }
                 wysw += "(";
                 wyswietlacz.setText(wysw);
                 trygonometria = false;
@@ -245,6 +252,9 @@ public class Zaawansowany extends AppCompatActivity {
         przyciskplusminus.setOnClickListener(new View.OnClickListener() {
 
             @Override public void onClick(View v) {
+                przyciskrowna.callOnClick();
+                wysw = kalkulator.plusminus(wysw);
+                wyswietlacz.setText(wysw);
 
             }
         });
@@ -259,6 +269,7 @@ public class Zaawansowany extends AppCompatActivity {
                     wysw += " + ";
                     wyswietlacz.setText(wysw);
                     dzialanieuz = true;
+                    rowna=false;
                 }
 
             }
@@ -266,13 +277,14 @@ public class Zaawansowany extends AppCompatActivity {
         przyciskminus.setOnClickListener(new View.OnClickListener() {
 
             @Override public void onClick(View v) {
-                if (dzialanieuz == true || trygonometria == true) {
+                if (trygonometria == true || (dzialanieuz==true && rowna==false)) {
                     wysw += "-";
                     wyswietlacz.setText(wysw);
                 } else {
                     wysw += " - ";
                     wyswietlacz.setText(wysw);
                     dzialanieuz = true;
+                    rowna=false;
                 }
 
             }
@@ -287,6 +299,7 @@ public class Zaawansowany extends AppCompatActivity {
                     wysw += " * ";
                     wyswietlacz.setText(wysw);
                     dzialanieuz = true;
+                    rowna=false;
                 }
 
             }
@@ -301,6 +314,7 @@ public class Zaawansowany extends AppCompatActivity {
                     wysw += " / ";
                     wyswietlacz.setText(wysw);
                     dzialanieuz = true;
+                    rowna=false;
                 }
 
             }
@@ -309,6 +323,10 @@ public class Zaawansowany extends AppCompatActivity {
 
             @Override public void onClick(View v) {
                 if (dzialanieuz == true || trygonometria == true) {
+                    if(rowna==true){
+                        wysw="";
+                        rowna=false;
+                    }
                     wysw += "sqrt (";
                     wyswietlacz.setText(wysw);
                     trygonometria = true;
@@ -324,7 +342,8 @@ public class Zaawansowany extends AppCompatActivity {
                 } else {
                     wysw += " ^2";
                     wyswietlacz.setText(wysw);
-                    dzialanieuz = true;
+                    dzialanieuz=true;
+                    rowna=false;
                 }
 
             }
@@ -333,6 +352,10 @@ public class Zaawansowany extends AppCompatActivity {
 
             @Override public void onClick(View v) {
                 if (dzialanieuz == true || trygonometria == true) {
+                    if(rowna==true){
+                        wysw="";
+                        rowna=false;
+                    }
                     wysw += "sin (";
                     wyswietlacz.setText(wysw);
                     trygonometria = true;
@@ -344,6 +367,10 @@ public class Zaawansowany extends AppCompatActivity {
 
             @Override public void onClick(View v) {
                 if (dzialanieuz == true || trygonometria == true) {
+                    if(rowna==true){
+                        wysw="";
+                        rowna=false;
+                    }
                     wysw += "cos (";
                     wyswietlacz.setText(wysw);
                     trygonometria = true;
@@ -355,6 +382,10 @@ public class Zaawansowany extends AppCompatActivity {
 
             @Override public void onClick(View v) {
                 if (dzialanieuz == true || trygonometria == true) {
+                    if(rowna==true){
+                        wysw="";
+                        rowna=false;
+                    }
                     wysw += "tan (";
                     wyswietlacz.setText(wysw);
                     trygonometria = true;
@@ -366,6 +397,10 @@ public class Zaawansowany extends AppCompatActivity {
 
             @Override public void onClick(View v) {
                 if (dzialanieuz == true || trygonometria == true) {
+                    if(rowna==true){
+                        wysw="";
+                        rowna=false;
+                    }
                     wysw += "ln (";
                     wyswietlacz.setText(wysw);
                     trygonometria = true;
@@ -377,6 +412,10 @@ public class Zaawansowany extends AppCompatActivity {
 
             @Override public void onClick(View v) {
                 if (dzialanieuz == true || trygonometria == true) {
+                    if(rowna==true){
+                        wysw="";
+                        rowna=false;
+                    }
                     wysw += "log (";
                     wyswietlacz.setText(wysw);
                     trygonometria = true;
@@ -392,6 +431,7 @@ public class Zaawansowany extends AppCompatActivity {
                     wysw += " ^";
                     wyswietlacz.setText(wysw);
                     dzialanieuz = true;
+                    rowna=false;
                 }
             }
         });
@@ -412,8 +452,9 @@ public class Zaawansowany extends AppCompatActivity {
                 }
                 wyswietlacz.setText(wysw);
                 liczniknawiaskow = 0;
-                dzialanieuz = true;
+                dzialanieuz = false;
                 trygonometria = false;
+                rowna=true;
             }
         });
 
@@ -421,6 +462,10 @@ public class Zaawansowany extends AppCompatActivity {
 
     private void liczby(String a, TextView wyswietlacz) {
 
+        if(rowna==true){
+            wysw="";
+            rowna=false;
+        }
         trygonometria = false;
         dzialanieuz = false;
         wysw = wysw + a;

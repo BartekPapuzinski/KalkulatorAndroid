@@ -84,9 +84,9 @@ public class KalkulatorTest {
     }
 
     @Test public void zakazanedzialania() {
-        String wejscie1 = "6 / 0";
+        String wejscie1 = "sqrt (4) + sqrt (4)";
 
-        String wyjscie1 = "Niedozwolone działanie";
+        String wyjscie1 = "4";
 
         assertEquals(wyjscie1, kalkulator.rowna(wejscie1));
 

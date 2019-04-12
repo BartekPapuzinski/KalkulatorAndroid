@@ -92,6 +92,7 @@ public class Kalkulator extends AppCompatActivity {
                             }
                         }
                     }
+                    System.out.println(tempobliczenia);
                     String wartosc = rowna(tempobliczenia);
 
                     if (index == index2) {
@@ -109,33 +110,52 @@ public class Kalkulator extends AppCompatActivity {
 
             do {
                 index = szukanie(obliczenia, "sin");
+                int index11 = szukanie(obliczenia, "-sin");
                 if (index != -1) {
                     String wartosc = sinus(obliczenia[index + 1]);
                     obliczenia = obliczeniaxmiejscowe(obliczenia, index, wartosc, 1);
+                }
+                if (index11 != -1) {
+                    String wartosc = sinus(obliczenia[index11 + 1]);
+                    wartosc= plusminus(wartosc);
+                    obliczenia = obliczeniaxmiejscowe(obliczenia, index11, wartosc, 1);
                 }
             }
             while (index != -1);
 
             do {
                 index = szukanie(obliczenia, "cos");
+                int index11 = szukanie(obliczenia, "-cos");
                 if (index != -1) {
                     String wartosc = cosinus(obliczenia[index + 1]);
                     obliczenia = obliczeniaxmiejscowe(obliczenia, index, wartosc, 1);
+                }
+                if (index11 != -1) {
+                    String wartosc = cosinus(obliczenia[index11 + 1]);
+                    wartosc= plusminus(wartosc);
+                    obliczenia = obliczeniaxmiejscowe(obliczenia, index11, wartosc, 1);
                 }
             }
             while (index != -1);
 
             do {
                 index = szukanie(obliczenia, "tan");
+                int index11 = szukanie(obliczenia,"-tan");
                 if (index != -1) {
                     String wartosc = tangens(obliczenia[index + 1]);
                     obliczenia = obliczeniaxmiejscowe(obliczenia, index, wartosc, 1);
+                }
+                if (index11 != -1) {
+                    String wartosc = tangens(obliczenia[index11 + 1]);
+                    wartosc= plusminus(wartosc);
+                    obliczenia = obliczeniaxmiejscowe(obliczenia, index11, wartosc, 1);
                 }
             }
             while (index != -1);
 
             do {
                 index = szukanie(obliczenia, "sqrt");
+                int index11 = szukanie(obliczenia,"-sqrt");
                 if (index != -1) {
                     if (Double.parseDouble(obliczenia[index + 1]) < 0) {
                         throw new IllegalArgumentException("Niedozwolone działanie");
@@ -143,11 +163,20 @@ public class Kalkulator extends AppCompatActivity {
                     String wartosc = pierwiastek(obliczenia[index + 1]);
                     obliczenia = obliczeniaxmiejscowe(obliczenia, index, wartosc, 1);
                 }
+                if (index11 != -1) {
+                    if (Double.parseDouble(obliczenia[index11 + 1]) < 0) {
+                        throw new IllegalArgumentException("Niedozwolone działanie");
+                    }
+                    String wartosc = pierwiastek(obliczenia[index11 + 1]);
+                    wartosc=plusminus(wartosc);
+                    obliczenia = obliczeniaxmiejscowe(obliczenia, index11, wartosc, 1);
+                }
             }
             while (index != -1);
 
             do {
                 index = szukanie(obliczenia, "ln");
+                int index11 = szukanie(obliczenia, "-ln");
                 if (index != -1) {
                     if (Double.parseDouble(obliczenia[index + 1]) < 0) {
                         throw new IllegalArgumentException("Niedozwolone działanie");
@@ -155,11 +184,20 @@ public class Kalkulator extends AppCompatActivity {
                     String wartosc = ln(obliczenia[index + 1]);
                     obliczenia = obliczeniaxmiejscowe(obliczenia, index, wartosc, 1);
                 }
+                if (index11 != -1) {
+                    if (Double.parseDouble(obliczenia[index11 + 1]) < 0) {
+                        throw new IllegalArgumentException("Niedozwolone działanie");
+                    }
+                    String wartosc = pierwiastek(obliczenia[index11 + 1]);
+                    wartosc=plusminus(wartosc);
+                    obliczenia = obliczeniaxmiejscowe(obliczenia, index11, wartosc, 1);
+                }
             }
             while (index != -1);
 
             do {
                 index = szukanie(obliczenia, "log");
+                int index11 = szukanie(obliczenia, "-log");
                 if (index != -1) {
                     if (Double.parseDouble(obliczenia[index + 1]) < 0) {
                         throw new IllegalArgumentException("Niedozwolone działanie");
@@ -167,6 +205,14 @@ public class Kalkulator extends AppCompatActivity {
                     String wartosc = log(obliczenia[index + 1]);
                     obliczenia = obliczeniaxmiejscowe(obliczenia, index, wartosc, 1);
                 }
+                if (index11 != -1) {
+                    if (Double.parseDouble(obliczenia[index11 + 1]) < 0) {
+                        throw new IllegalArgumentException("Niedozwolone działanie");
+                    }
+                    String wartosc = log(obliczenia[index11 + 1]);
+                    obliczenia = obliczeniaxmiejscowe(obliczenia, index11, wartosc, 1);
+                }
+
             }
             while (index != -1);
 
